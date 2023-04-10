@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+<form method="post">
+    {% csrf_token %}
+    <div class="container register-form">
+        <div class="form">
+            <div class="note">
+                <p>New Admission of Student In School</p>
+            </div>
+
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        {% render_field student_form.roll class="form-control" placeholder="Admission Number" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field user_form.username class="form-control" placeholder="Username" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.date_of_admission class="form-control" placeholder="Date of Admission(year-month-day)" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field user_form.first_name class="form-control" placeholder="First Name" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field user_form.last_name class="form-control" placeholder="Last Name" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.date_of_birth class="form-control" placeholder="Date of Birth(year-month-day)" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.gender class="form-control" placeholder="Gender" %}
+                        </div>
+                        
+                        <div class="form-group">
+                        {% render_field student_form.mother class="form-control" placeholder="Mother" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.father class="form-control" placeholder="Father" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.mobile class="form-control" placeholder="Mobile" %}
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        {% render_field student_form.residence class="form-control" placeholder="Residence" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.cl class="form-control" placeholder="Class" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.foodfee class="form-control" placeholder="Foodfee" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.carfee class="form-control" placeholder="CarFee" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.fee class="form-control" placeholder="Fee" %}
+                        </div>
+                    
+                        <div class="form-group">
+                        {% render_field user_form.password class="form-control" type="password" placeholder="Password" %}
+                        </div>
+
+                        <!-- |||||||||||||||||| ADDED ON 5TH OCTOBER |||||||||||||||||||||||||||| -->
+                        <div class="form-group">
+                        {% render_field student_form.payment_category class="form-control" placeholder="Payment Category" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.payment_method class="form-control" placeholder="Payment Method" %}
+                        </div>
+                        <div class="form-group">
+                        {% render_field student_form.form_of_transportation class="form-control" placeholder="Bus or not" %}
+                        </div>
+                        <!-- |||||||||||||||||| ADDED ON 5TH OCTOBER |||||||||||||||||||||||||||| -->
+
+                        <div class="form-group">
+                        {% render_field student_form.passport class="form-control" placeholder="Passport" %}
+                        </div>
+                        
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

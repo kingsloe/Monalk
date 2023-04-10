@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+
+<section class="hom"> 
+  <div class="text">
+
+    <input type="text" class="search form-control" placeholder="Search...">
+
+    <table class="table table-bordered border-primary results">
+      <thead class="stay">
+        <tr>
+          <th>Name</th>
+          <th>Residence</th>
+          <th>Class</th>
+          <th>Pay</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in students %}
+        <tr>
+          <td class="tablestyle"><strong>{{s.get_name}}</strong></td>
+          <td class="tablestyle"><strong>{{s.residence}}</strong></td>
+          <td class="tablestyle"><strong>{{s.cl}}</strong></td>
+          <td class="tablestyle"><a href="{% url 'admin_student_termly_payment' s.id %}" class="btn btn-success">Payment</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+<center>
+<form action="" method="POST" id="resetdailypayment">
+    {% csrf_token %} 
+    <input class="btn btn-danger" type="button" value="Reset Payment" id="dailyresetbtn">
+</form>
+<button class="btn btn-success resetbtn"><a href="{% url 'admin_termly_paid_students' %}">Paid Students</a></button>
+</center>
+<script>
+    bttn1 = document.getElementById('dailyresetbtn');
+    if(bttn1){
+        bttn1.addEventListener('click', function(){
+            if(confirm('Do you want to reset termly payments?')){
+                document.getElementById('resetdailypayment').submit();
+            }else{
+                event.preventDefault()
+            }
+        }
+    )}
+</script>
+
+{% endblock content %}

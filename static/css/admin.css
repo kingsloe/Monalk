@@ -1,0 +1,144 @@
+div.row{
+    margin-left: 0px;
+    margin-right: 0px; 
+    margin-top: 30px;
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    margin: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.bg-c-blue {
+    background: linear-gradient(45deg, #4099ff,#597481);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg, #2ed8b6, #597481);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg, #FFB64D, #597481);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg, #FF5370,#597481);
+}  
+ 
+  
+a:link {
+    text-decoration: none;
+  }
+
+  .alert {
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    background: none;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+
+  .order-card, a {
+    color: #fff;
+  }
+
+  .card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    margin: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .card .card-block {
+    padding: 35px;
+  }
+
+  .order-card i {
+    font-size: 26px;
+  }
+
+  .f-left {
+    float: left;
+  }
+
+  .f-right {
+    float: right;
+  }
+  .notice{
+    background: black;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+  }
+h2{
+    margin-bottom: -1px;
+}
+
+.hedy{
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  margin-top: 20px;
+}
+
+a{
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.last-record-of-money{
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;	
+}
+h3 {
+  font-weight: bold;
+}
+.update, .updat{
+  margin: 0 200% 0 45%;
+  display: inline-flex;
+  justify-content: center;
+}
+
+@media(max-width: 615px) {
+  .last-record-of-money{
+    display: grid;
+    text-align: center;	
+  }
+  .update, .updat{
+    display: inline-flex;
+    text-align: center;
+    margin: 0 0 0 0;
+  }
+  .update{
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+  }
+}

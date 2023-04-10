@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+
+<section class="hom"> 
+    <div class="text">
+    <input type="text" class="search form-control" placeholder="Search...">
+    <table class="table table-bordered border-primary results">
+        <thead class="stay">
+        <tr>    
+          <th class="tablestyle">Names</th>
+          <th class="tablestyle">Fees</th>
+          <th class="tablestyle">Broom</th>
+          <th class="tablestyle">Troll</th>
+          <th class="tablestyle">Soap</th>
+          <th class="tablestyle">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in records.object_list %}
+        <tr>
+          <td class="tablestyle">{{record.student}}</td>
+          <td class="tablestyle">{{record.schoolfees}}</td>
+          <td class="tablestyle">{{record.broom}}</td>
+          <td class="tablestyle">{{record.troll}}</td>
+          <td class="tablestyle">{{record.soap}}</td>
+          <td class="tablestyle">{{record.when_made}}</td>
+        </tr>
+        {% endfor %}
+      </tbody> 
+    </table> 
+    </div>
+</section>
+<center>
+    {%if records.has_previous %}
+        <a href="?page={{records.previous_page_number}}"><button class="btn btn-success"><i>Previous</i></button></a> {# link to the prev page #}
+    {% endif %}
+    <span class="page_num">{{records.number}}</span>
+    
+    {%if records.has_next %} {# whether the next page exists #}
+        <a href="?page={{records.next_page_number}}"><button class="btn btn-success"><i>Next</i></button></a> {# link to the next page #}
+    {% endif %}
+</center>
+      
+{% endblock%}

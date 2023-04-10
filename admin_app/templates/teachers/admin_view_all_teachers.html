@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+<section class="hom"> 
+  <div class="text">
+      <input type="text" class="search form-control" placeholder="Search...">
+      <table class="table table-bordered border-primary results">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Salary</th>
+          <th>Joined Date</th>
+        </tr>
+    </thead>
+    <tbody class="results">
+      {% for t in teachers %}
+      <tr>
+        <td class="tablestyle"><strong><a href="{% url 'admin_update_individual_teacher_info' t.id %}" id="std_sty">{{t.get_name}}</a></strong></td>
+        <td class="tablestyle"><strong>{{t.mobile}}</strong></td>
+        <td class="tablestyle"><strong>${{t.salary}}</strong></td>
+        <td class="tablestyle"><strong>{{t.joindate}}</strong></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+      </table>
+  </div>  
+</section>
+{% endblock content %}

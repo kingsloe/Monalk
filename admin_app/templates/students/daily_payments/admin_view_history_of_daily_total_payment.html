@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+<section class="hom"> 
+    <input type="text" class="search form-control" placeholder="Search...">
+    <table class="table table-bordered border-primary results">
+      <thead class="stay">
+        <tr>
+          <th class="tablestyle">Date</th>
+          <th class="tablestyle">Food Money</th>
+          <th class="tablestyle">Bus Money</th>
+          <th class="tablestyle">School Fees</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% comment %} {% for record in daily_fee_money_record %}
+        <tr>
+          <td>{{record.when_made}}</td>
+          <td>{{record.sum}}</td>
+          <td>{{record.sum2}}</td>
+          <td>{{record.sum3}}</td>
+        </tr>
+        {% endfor%} {% endcomment %}
+        {% for record in daily_fee_money_record %}
+        <tr>
+          <td class="tablestyle">{{record.when_made}}</td>
+          <td class="tablestyle">{{record.sum|floatformat}}</td>
+          {% if record.sum3 == None or record.sum2 == None %}
+          <td class="tablestyle">0</td>
+          <td class="tablestyle">0</td>
+          {% else %}
+          <td class="tablestyle">{{record.sum2|floatformat}}</td>
+          <td class="tablestyle">{{record.sum3|floatformat}}</td>        
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+        
+</section>
+
+<center><h1 id="income"></h1></center>
+        <center>    
+        {% if daily_fee_money_record.has_previous %}
+        <a href="?page={{daily_fee_money_record.previous_page_number}}"><button class="btn btn-success"><i>Previous</i></button></a>
+        {% endif %}
+        <span class="page_num">{{daily_fee_money_record.number}}</span>
+        {%if daily_fee_money_record.has_next %}
+        <a href="?page={{daily_fee_money_record.next_page_number}}"><button class="btn btn-success"><i>Next</i></button></a> {# link to the next page #}
+    {% endif %}
+    </center>
+
+<script>
+  '{% for record in daily_fee_money_record %}'  
+    '{% if forloop.first %}'
+      var sum1 = parseInt('{{record.sum}}')
+      var sum2 = parseInt('{{record.sum2}}')
+      var sum3 = parseInt('{{record.sum3}}')
+      var when_made = '{{record.when_made}}'
+    '{% endif %}'
+  '{% endfor %}'
+  '{% for record in daily_school_fee_money_record %}'  
+    '{% if forloop.last %}'
+      var sum4 = parseInt('{{record.sum4}}')
+      var schoolfeesdate = '{{record.when_made}}'
+    '{% endif %}'
+  '{% endfor %}'
+  if(typeof sum4 !== 'undefined'){
+     if (when_made == schoolfeesdate){
+      var added = sum1+sum2+sum3+sum4
+     }else{
+      var added = sum1+sum2+sum3
+     }
+  }else{
+    var added = sum1+sum2+sum3
+  }
+  document.getElementById("income").innerHTML="Total Payment For Today: " + added;
+  
+</script>
+
+
+{% endblock%}
+

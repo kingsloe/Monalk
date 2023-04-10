@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<nav class="navbar navbar-inverse sidebarNavigation navbar-fixed-top navbar-custom" data-sidebarclass="navbar-inverse" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle right-navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static '/images/brand.png' %}" alt="" height="55px" class="mine"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'student-homepage' %}" style="color: #131313"><span class="glyphicon glyphicon-home"></span><b> Dashboard</b></a></li>
+          <li><a href="{% url 'notice' %}" style="color: #131313"><span class="glyphicon glyphicon-bullhorn"></span><b> Notice</b></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">    
+          <li><a href="/logout" style="color: #131313"><span class="glyphicon glyphicon-log-in"></span><b> Logout</b></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>

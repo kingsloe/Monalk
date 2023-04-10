@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% extends 'general_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup_options.css' %}">
+
+<style>
+  img{
+      border-radius: 20px;
+  }
+  .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+      border-radius: 20px;
+  }
+  .title {
+      color: black;
+      font-size: 18px;
+  }
+  
+  .man {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px; 
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+  }
+  
+  button:hover,
+      a:hover {
+      opacity: 0.7;
+  }
+  
+  .grid-container {
+     display : flex;
+     flex-direction : row ;
+     justify-content : space-around;
+     flex-flow : wrap;
+     margin-top: 17%;
+  }
+  
+  a:link {
+     text-decoration: none;
+  }
+  
+  a {
+  color: white;
+  }
+  
+  @media (max-width: 700px) {
+    .grid-container {
+    display : block;
+    margin-top: 17%;
+  }
+  }
+</style>
+
+<div class="grid-container">
+
+    <!-- <div class="grid-item">
+      <div class="card">
+        <img src="{% static 'images/avatar2.png' %}" alt="John" style="width:100%">
+        <p class="title"><b>TEACHER</b></p>
+        <p><a href="{% url 'teachers_app:teacher_signup' %}"><button class="man">View</button></a></p>
+      </div>
+    </div> -->
+
+    <div class="grid-item">
+      <div class="card">
+        <img src="{% static 'images/avatar.png' %}" alt="John" style="width:100%">
+        <p class="title"><b>STUDENT</b></p>
+        <p><a href="{% url 'students_app:student_signup' %}"><button class="man">View</button></a></p>
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}

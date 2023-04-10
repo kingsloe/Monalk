@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% extends 'student_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+
+<div class="container">
+  
+    <div class="row">
+      <h1 class="hedy">{{name}}</h1>
+      <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-blue order-card">
+        <div class="card-block">
+        <h6 class="m-b-20">Id</h6>
+        <h2 class="text-right"><i class="fa-solid fa-id-card f-left"></i></h2>
+        <p><span style="font-size: 20px;padding-left: 6px;">{{roll}}</span></p>
+        </div>
+      </div>
+      </div>
+    
+      <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-green order-card">
+        <div class="card-block">
+        <h6 class="m-b-20">Date of Admission</h6>
+        <h2 class="text-right"><i class="fa-solid fa-calendar-days f-left"></i></h2>
+        <p><span style="font-size: 20px;padding-left: 6px;">{{date_of_admission}}</span></p>
+        </div>
+      </div>
+      </div>
+    
+      <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-yellow order-card">
+        <div class="card-block">
+        <h6 class="m-b-20">Date of Birth</h6>
+        <h2 class="text-right"><i class="fas fa-calendar-days f-left"></i></h2>
+        <p><span style="font-size: 20px;padding-left: 6px;">{{date_of_birth}}</span></p>
+        </div>
+      </div>
+      </div>
+    
+      <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-blue order-card">
+        <div class="card-block">
+        <h6 class="m-b-20">Mother</h6>
+        <h2 class="text-right"><i class="fas fa-person-dress f-left"></i></h2>
+        <p><span style="font-size: 20px;padding-left: 6px;">{{mother}}</span></p>
+        </div>
+      </div>
+      </div>
+    
+      <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-green order-card">
+        <div class="card-block">
+        <h6 class="m-b-20">Fahter</h6>
+        <h2 class="text-right"><i class="fas fa-person f-left"></i></h2>
+        <p><span style="font-size: 20px;padding-left: 6px;">{{father}}</span></p>
+        </div>
+      </div>
+      </div>
+    
+      <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-yellow order-card">
+        <div class="card-block">
+        <h6 class="m-b-20">Class</h6>
+        <h2 class="text-right"><i class="fa-regular fa-chalkboard-user f-left"></i></h2>
+        <p><span style="font-size: 20px;padding-left: 6px;">{{cl}}</span></p>
+        </div>
+      </div>
+      </div>
+    
+      <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-blue order-card">
+        <div class="card-block">
+        <h6 class="m-b-20">Residence</h6>
+        <h2 class="text-right"><i class="fa-duotone fa-house-chimney f-left"></i></h2>
+        <p><span style="font-size: 20px;padding-left: 6px;">{{residence}}</span></p>
+        </div>
+      </div>
+      </div>
+  
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+          <h6 class="m-b-20">Daily Debt</h6>
+          <h2 class="text-right"><i class="fas fa-dollar f-left"></i></h2>
+          <p><span style="font-size: 20px;padding-left: 6px;">{{debt}}</span></p>
+          </div>
+        </div>
+        </div>
+  
+        <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-yellow order-card">
+            <div class="card-block">
+            <h6 class="m-b-20">Balance</h6>
+            <h2 class="text-right"><i class="fas fa-dollar f-left"></i></h2>
+            <p><span style="font-size: 20px;padding-left: 6px;">{{balance}}</span></p>
+            </div>
+          </div>
+        </div>
+        {% if method %}
+        <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-blue order-card">
+            <div class="card-block">
+            <h6 class="m-b-20">Termly Debt</h6>
+            <h2 class="text-right"><i class="fas fa-dollar f-left"></i></h2>
+            <p><span style="font-size: 20px;padding-left: 6px;">{{termly_debt}}</span></p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+    </div>
+  </div>
+
+  <br><br>
+  <div class="notice">
+    <h4>Notice Board</h4>
+  </div><br>
+{%for n in notice%}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Posted on {{n.date}} </strong><br><b>By : {{n.by}}</b><br> {{n.message}}
+</div>
+{%endfor%}
+{% endblock content %}

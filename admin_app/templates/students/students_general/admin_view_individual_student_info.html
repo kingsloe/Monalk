@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+
+
+
+<div class="container">
+	
+	<div class="row">
+		<h1 class="hedy">This is {{student.get_name}}</h1>
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-blue order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Id</h6>
+			<h2 class="text-right"><i class="fas fa-user-tie f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.roll}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-green order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Date of Admission</h6>
+			<h2 class="text-right"><i class="fas fa-mobile-alt f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.date_of_admission}}</span></p>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Name</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.get_name}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-pink order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Date of Birth</h6>
+			<h2 class="text-right"><i class="fas fa-dollar f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.date_of_birth}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Gender</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.gender}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Mother</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.mother}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Fahter</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.father}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Phone</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.mobile}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Class</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.cl}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Residence</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.residence}}</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-xl-3">
+		<div class="card bg-c-yellow order-card">
+		<div class="card-block">
+			<h6 class="m-b-20">Fee</h6>
+			<h2 class="text-right"><i class="fas fa-list-ol f-left"></i></h2>
+			<p><span style="font-size: 20px;padding-left: 6px;">{{student.fee}}</span></p>
+		</div>
+		</div>
+	</div>
+	</div>
+	<div class="update">
+		<a href="{% url 'admin_update_individual_student_info' student.id %}" class="updat btn btn-success">Update</a>
+		<form method="POST" id="deletestudentform">
+			{% csrf_token %}
+			<button id="deletestudent" class="updat btn btn-danger">Delete</button>
+		</form>
+	</div>
+</div>
+
+<div class="last-record-of-money">
+	<h3 style="color: #41532a;" id="calculated"></h3>
+
+	{% for record in payment_record %}
+	{% if forloop.last %}
+
+	<h3 style="color: #41532a;">BALANCE: {{record.balance}}</h3>
+	<h3 class="areas">ARREAS: {{record.depth}}</h3>
+	{% endif %}
+	{% endfor %}
+</div>
+
+<table class="table table-bordered border-primary">
+	<tr>
+		<th>Day</th>
+		<th>Canteen</th>
+		<th>Tuition</th>
+		<th>Bus</th>
+		<th>Delete</th>
+	</tr>
+	<tbody>
+		{% for record in payment_record %}
+		<tr>
+			<td class="tablestyle"><strong>{{record.when_made}}</strong></td>
+			{% if record.pay == None %}
+			<td class="tablestyle"><strong>0</strong></td>
+			{% else %}
+			<td class="tablestyle"><strong>{{record.pay|floatformat}}</strong></td>
+			{% endif %}
+			{% if record.schoolfees == None %}
+			<td class="tablestyle"><strong>0</strong></td>
+			{% else %}
+			<td class="tablestyle"><strong>{{record.schoolfees|floatformat}}</strong></td>
+			{% endif %}
+			{% if record.carpay == None %}
+			<td class="tablestyle"><strong>0</strong></td>
+			{% else %}
+			<td class="tablestyle"><strong>{{record.carpay|floatformat}}</strong></td>
+			{% endif %}
+			<form action="{% url 'admin_delete_payment_from_student_profile' record.id %}" method="POST" class="deletepaymentform">
+				{% csrf_token %}
+				<td class="tablestyle"><button class="delete-payment updat btn btn-danger" name="delete_payment">Delete</button></td>
+				<!-- <td class="tablestyle"><button id="delete-payment" class="updat btn btn-danger">Delete</button></td> -->
+		</form>			
+		</tr>
+		{% endfor %}
+		</tbody>
+</table>	
+
+<script>
+	var canteen = parseInt('{{daily_canteen_record.daily_canteen}}')
+	var bus = parseInt('{{daily_bus_record.daily_bus}}')
+	var tuition = parseInt('{{daily_tuition_record.daily_tuition}}')
+	let addinglist = [canteen, bus, tuition];
+	var added = 0
+	for(let i=0; i<addinglist.length; i++){
+		if(addinglist[i]){
+		added = added+addinglist[i]
+	}}
+	document.getElementById('calculated').innerHTML = 'TOTAL PAID: '+ added;
+
+
+	var bttn = document.getElementById('deletestudent');
+	if(bttn){
+	bttn.addEventListener('click', function(){
+		if (confirm('Are you sure you want to delete this student? ')){
+			bttn.name = 'delete_student'
+			document.getElementById('deletestudentform').submit();
+		}else{
+			event.preventDefault()
+		}
+	})}
+
+
+
+	var bttn2 = document.getElementsByClassName('delete-payment');
+	if(bttn2){	
+		for(var i = 0; i < bttn2.length; i++){
+		bttn2[i].addEventListener('click', function(){
+			if (confirm('Are you sure you want to delete this payment? ')){	
+				document.getElementsByClassName('deletepaymentform').submit();
+			}else{
+				event.preventDefault()
+			}
+	})}}
+	
+</script>
+{% endblock content %}

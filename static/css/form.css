@@ -1,0 +1,53 @@
+a:link {
+    text-decoration: none;
+  }
+
+  .note {
+    text-align: center;
+    height: 80px;
+     background: -webkit-linear-gradient(left, #343a40, #607d8b);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+  }
+
+  .form-content {
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+  }
+
+  .form-control {
+    border-radius: 1.5rem;
+  }
+
+  .btnSubDel{
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  form{
+    margin-top: 75px;
+  }
+
+  .check{
+    font-size: xx-large;
+    height: 20px;
+    width: 20px;
+  }
+.student_name{
+  font-weight: bold;
+  text-align: center;
+} 
+
+.balnarea{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.paybtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

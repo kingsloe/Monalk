@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+{% load auth_extras %}
+<nav class="navbar navbar-inverse sidebarNavigation navbar-fixed-top navbar-custom" data-sidebarclass="navbar-inverse" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle right-navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'images/brand.png' %}" alt="Monalk logo" height="65px"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          {% if user.is_authenticated %}
+            {% if request.user|has_group:'ADMIN' %}  
+                <li><a href="{% url 'admin-homepage' %}" style="color: #131313"><span class="glyphicon glyphicon-home"></span><b> Dashboard </b></a></li>
+              {% elif request.user|has_group:'TEACHER' %}
+                <li><a href="{% url 'homepage' %}" style="color: #131313"><span class="glyphicon glyphicon-home"></span><b> Dashboard </b></a></li>
+              {% elif request.user|has_group:'STUDENT' %}
+                <li><a href="{% url 'student-homepage' %}" style="color: #131313"><span class="glyphicon glyphicon-home"></span><b> Dashboard </b></a></li>
+              {% endif %}
+            {% else %}
+              <li><a href="{% url 'homepage' %}" style="color: #131313"><span class="glyphicon glyphicon-home"></span><b> Home </b></a></li>
+          {% endif %}
+          <li><a href="{% url 'aboutus' %}" style="color: #131313"><span class="glyphicon glyphicon-user"></span><b> About/Contact Us</b></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}" style="color: #131313"><span class="glyphicon glyphicon-user"></span><b> Logout 
+          </b></a></li>
+          {% else %}
+          <li><a href="{% url 'signup_options' %}" style="color: #131313"><span class="glyphicon glyphicon-user"></span><b> Sign Up</b></a></li>
+          <li><a href="{% url 'login' %}" style="color: #131313"><span class="glyphicon glyphicon-log-in"></span><b> Login</b></a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>

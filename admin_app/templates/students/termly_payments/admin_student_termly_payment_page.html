@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+<form method="post">
+  {% csrf_token %}
+  <div class="container register-form">
+    <div class="form">
+      <div class="note">
+        <p>Make Payment</p>  
+      </div>
+
+      <div class="form-content">
+        <h1 class="student_name">{{ student }}</h1>
+        <div class="form-group" style="display: none;">
+          <p><b>Name</b></p>   
+          {% render_field form.student class="form-control" %}
+        </div>
+        <div class="form-group hidefee">
+          <p><b>Fees Payment</b></p>
+          {% render_field form.schoolfees class="form-control hidefee" id="fee" placeholder="Fees Payment" %}
+        </div>
+        <div class="form-group">
+          <p><b>Date</b></p>
+          {% render_field form.when_made class="form-control" placeholder="Date" %}
+        </div>
+        <div class="form-group hidefee">
+          <p><b>Debt</b></p>
+          {% render_field form.debth id="debt" class="form-control hidefee" placeholder="Remaining Debt" %}
+        </div>
+        <div class="form-group">
+          <p><b>Troll</b></p>
+          {% render_field form.troll id="troll" class="form-control" %}
+        </div>
+        <div class="form-group">
+          <p><b>Soap</b></p>
+          {% render_field form.soap id="soap" class="form-control" %}
+        </div>
+        <div class="form-group">
+          <p><b>Broom</b></p>
+          {% render_field form.broom id="broom" class="form-control" %}
+        </div>
+        <div class="balnarea">
+        <button type="submit" class="btn btn-success">Pay</button>
+
+      {% comment %} {% for lastdebt in  student_pay%} 
+        {% if forloop.last %}
+      <h3>AR: {{lastdebt.debth}}</h3>
+        {% endif %}
+      {% endfor %} {% endcomment %}
+      <h3>AR: {{student.termly_debt}}</h3>
+    </div>
+      </div>
+      
+    </div>
+  </div>
+
+</form>
+
+<script>
+  '{% if student.troll == True %}'
+    document.getElementById('troll').checked = true;
+  '{% endif %}'
+  '{% if student.soap == True %}'
+    document.getElementById('soap').checked = true;
+  '{% endif %}'
+  '{% if student.broom == True %}'
+    document.getElementById('broom').checked = true;
+  '{% endif %}'
+  '{% if student.payment_method == 'Pay_Per_Day' %}'
+    document.getElementById('fee').value = 0;
+    document.getElementById('debt').value = 0;
+    var hidefee = document.getElementsByClassName('hidefee');
+    for(let i = 0; i < hidefee.length; i++){
+      hidefee[i].style.display = 'none';
+    }
+  '{% endif %}'
+
+</script>
+
+{% endblock content %}
+  

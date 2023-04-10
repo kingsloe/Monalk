@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+<section class="hom"> 
+    <div class="text">
+        <input type="text" class="search form-control" placeholder="Search...">
+    <table class="table table-bordered border-primary results">
+      <thead class="stay">
+        <tr>
+          <th>Names</th>
+          <th>Reset</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr>
+          <td class="tablestyle">{{student.get_name}}</td>
+          <td>
+          <form action="{% url 'admin_delete_termly_paid_student' student.id %}" method="POST" class="delete_payment_form">
+            {% csrf_token %}
+            <button class="btn btn-danger delete">Reset</button>
+        </form>
+    </td>
+        </tr>
+        {% endfor %}
+      </tbody> 
+    </table> 
+    </div>
+</section>
+
+<script>
+    bttn1 = document.getElementsByClassName('delete');
+    if(bttn1){
+        for(var i = 0; i < bttn1.length; i++){
+        bttn1[i].addEventListener('click', function(){
+            if(confirm('Do you want to approve this student?')){
+                document.getElementsByClassName('delete_payment_form').submit();
+            }else{
+                event.preventDefault()
+            }
+        }
+    )}}
+</script>
+{% endblock%}

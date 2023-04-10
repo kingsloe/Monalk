@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block">
+            <h4 class="m-b-20">Total Teacher</h4>
+            <h2 class="text-right"><i class="fas fa-chalkboard-teacher f-left"></i><span>{{active_teachers}}</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+            <h4 class="m-b-20">Total Student</h4>
+            <h2 class="text-right"><i class="fas fa-user-graduate f-left"></i><span>{{active_students}}</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-yellow order-card">
+          <div class="card-block">
+            <h4 class="m-b-20">Teacher's Salary</h4>
+            <h2 class="text-right"><i class="fas fa-dollar f-left"></i><span>{{teachers_salary}}</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block">
+            <h4 class="m-b-20">Student Fee</h4>
+            <h2 class="text-right"><i class="fas fa-dollar f-left"></i><span>{{students_fees}}</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+            <h4 class="m-b-20">Pending Teachers</h4>
+            <h2 class="text-right"><i class="fas fa-spinner f-left"></i><span>{{pending_teachers}}</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-yellow order-card">
+          <div class="card-block">
+            <h4 class="m-b-20">Pending Admissions</h4>
+            <h2 class="text-right"><i class="fas fa-spinner f-left"></i><span>{{pending_students}}</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="notice">
+    <h4>Notice Board</h4>
+  </div><br>
+  {% for notice in notices %}
+  <div class="alert">
+    <!-- <form action="{% url 'delete_notice' notice.id %}" method="POST" id="deletestudentform">  -->
+      {% csrf_token %}
+      <a href="{% url 'delete_notice' notice.id %}" class="closebtn"><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span></a>
+      <!-- <input type="button" value="&times" class="closebtn" id="deletestudent"> -->
+      <strong>Posted on {{notice.date}} </strong><br><b>By : {{notice.by}}</b><br> {{notice.message}}
+    <!-- </form>   -->
+
+  </div>
+  {% endfor %}
+  <script>
+    var bttn = document.getElementById('deletestudent');
+    if(bttn){
+    bttn.addEventListener('click', function(){
+      if (confirm('Are you sure you want to delete this announcement? ')){
+        document.getElementById('deletestudentform').submit();
+      }else{
+        return false;
+      }
+    })}
+  </script>
+{% endblock content %}

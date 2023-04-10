@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% extends 'general_base.html' %}
+
+{% block content %}
+<style type="text/css">
+    body {
+      color: #aa082e;
+      background-color: #BBA14F;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+       background: black;
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: black;
+      color: #fff;
+    }
+  @media(max-width: 767px){
+  .btnSubmit {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    width: 30%;
+    cursor: pointer;
+    background: black;
+    color: #fff;
+  }
+  .text-center {
+    font-size: 15px;
+  }
+  .form{
+    margin-top: 50%;
+  }
+}   
+  </style>
+
+
+<br>
+<br>
+<br><br>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="container register-form">
+      <div class="form">
+        <div class="note">
+          <p>Login To Monalk Educational Complex</p>
+        </div>
+
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                
+                <input type="text" class="form-control" placeholder="text" name="username">
+              </div>
+
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                
+                <input type="password" class="form-control" placeholder="password" name="password">
+              </div>
+
+            </div>
+          </div>
+          <button type="submit" class="btnSubmit">Login</button>
+          <div class="text-center">Don't have an account? <a href="#">SignUp here</a></div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+  <br><br><br>
+
+  {% endblock content %}
