@@ -66,13 +66,13 @@
 <script>
 
   // |||||||||||||||||||| CALCULATE EVERYTHING ||||||||||||||||
-  if('{{student.payment_method}}' == 'School_Fees_Aside'){
-    '{% for i in student_pay%}'
-    '{% if forloop.last %}'
-    document.getElementById('debt').defaultValue = '{{i.depth}}'
-    '{% endif %}'
+    '{% for i in student_pay %}'
+      '{% if forloop.last %}'
+        document.getElementById('debt').defaultValue = '{{i.depth}}'
+        document.getElementById('balance').defaultValue = '{{i.balance}}'
+        console.log('{{i.depth}}')
+      '{% endif %}'
     '{% endfor %}'
-  }
   function trying(){
     const SCHOOL_FEES = 3;
     const BUSS_ADAMSU = 3;
